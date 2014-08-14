@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nfcbeamer"
+    package="de.smbsolutions.tagungVisitor"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,9 +8,9 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
-   <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
         android:name="android.hardware.nfc"
@@ -21,26 +21,30 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.nfcbeamer.MainActivity">
-             <intent-filter>
+        <activity android:name="de.smbsolutions.tagungVisitor.MainActivity" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> 
-            </activity>
-            
-        <activity android:name="com.example.nfcbeamer.NewRoomActivity"  android:windowSoftInputMode="stateHidden|adjustResize">
-            
+            </intent-filter>
         </activity>
-          <activity android:name="com.example.nfcbeamer.ReadTagActivity"></activity>
-            <activity android:name="com.example.nfcbeamer.WriteTagActivity"></activity>
-            <activity android:name="com.example.nfcbeamer.NewPresentationActivity"></activity>
-              <activity android:name="com.example.nfcbeamer.CreatePresentationActivity" android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
+            android:name="de.smbsolutions.tagungVisitor.NewRoomActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity android:name="de.smbsolutions.tagungVisitor.AskUserActivity" >
+        </activity>
+        <activity android:name="de.smbsolutions.tagungVisitor.WriteTagActivity" >
+        </activity>
     </application>
 
     <intent-filter>
-        <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-        <category android:name="android.intent.category.DEFAULT" />
+        <action android:name="android.nfc.action.TECH_DISCOVERED" />
+          <category android:name="android.intent.category.DEFAULT" />
+       <data android:scheme="http"
+            android:host="smbsolutions.de"
+            android:pathPrefix="/index.html" />
+      
     </intent-filter>
 
 </manifest>

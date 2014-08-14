@@ -1,38 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/touch_green"
+    >
 
-    <LinearLayout
-        android:id="@+id/linearLayoutMainActivity"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/buttonNewRoom"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Neuen Raum anlegen" />
-
-        <Button
-            android:id="@+id/buttonNewPresentation"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Neue Präsentation anlegen" />
-        
-         <Button
-            android:id="@+id/buttonReadTag"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Tag Inhalt prüfen" />
-    </LinearLayout>
-
+    
+    <ProgressBar
+    	android:indeterminate="true"
+    	android:layout_centerInParent="true"
+    	android:layout_width="75dp"
+    	android:layout_height="75dp"/>
+    
+    <TextView
+    	android:layout_alignParentBottom="true"
+    	android:layout_marginBottom="50dp"
+    	android:layout_centerHorizontal="true"
+    	android:text="Bitte Tag an den Sensor halten"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:textSize="18dp"
+    	android:textStyle="bold"
+    	android:gravity="center_horizontal"
+    	/>
 </RelativeLayout>
