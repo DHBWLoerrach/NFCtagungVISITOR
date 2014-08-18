@@ -1,7 +1,12 @@
-package de.smbsolutions.tagungVisitor;
+package de.smbsolutions.tagungVisitor.Database;
 
+/**
+ * Instanz der DB-Klasse "Presentations"
+ * @author Mirko
+ *
+ */
 public class Presentation {
-	
+
 	public String objectId;
 	public String Referent;
 	public String date;
@@ -9,10 +14,9 @@ public class Presentation {
 	public String time_from;
 	public String time_to;
 	public String topic;
-	
-	
-	
-	public Presentation(String objectId, String Referent, String date, String room_id, String time_from, String time_to, String topic) {
+
+	public Presentation(String objectId, String Referent, String date,
+			String room_id, String time_from, String time_to, String topic) {
 		this.objectId = objectId;
 		this.Referent = Referent;
 		this.date = date;
@@ -21,34 +25,43 @@ public class Presentation {
 		this.time_to = time_to;
 		this.topic = topic;
 	}
-	
+
 	public String getObjectId() {
 		return objectId;
 	}
+
 	public void setObjectId(String objectId) {
 		this.objectId = objectId;
 	}
+
 	public String getReferent() {
 		return Referent;
 	}
+
 	public void setReferent(String referent) {
 		Referent = referent;
 	}
+
 	public String getDate() {
 		return date;
 	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	public String getTime_from() {
 		return time_from;
 	}
+
 	public void setTime_from(String time_from) {
 		this.time_from = time_from;
 	}
+
 	public String getTime_to() {
 		return time_to;
 	}
+
 	public void setTime_to(String time_to) {
 		this.time_to = time_to;
 	}
@@ -68,6 +81,5 @@ public class Presentation {
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
-	
 
 }

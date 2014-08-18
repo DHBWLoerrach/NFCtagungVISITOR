@@ -1,4 +1,4 @@
-package de.smbsolutions.tagungVisitor;
+package de.smbsolutions.tagungVisitor.Database;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,25 +7,23 @@ import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
-import android.sax.StartElementListener;
-import android.text.format.Time;
-import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.SaveCallback;
 
-
+/**
+ * Diese Klasse repräsentiert die Parse Online Datenbank
+ * 
+ * @author Mirko
+ * 
+ */
 public class Database {
 
-	public ArrayList<Room> arrayListRooms;
 	public ArrayList<Presentation> arrayListPresentation;
 	private static Database db_object = null;
 
-	private Context context;
 
 	/**
 	 * Liefert die Instanz zurück (Singleton)
@@ -41,8 +39,6 @@ public class Database {
 	 */
 	private Database(Context context) {
 
-		this.context = context;
-
 		Parse.initialize(context, "TKlxT9rAYg75PYw19N7zsTqDPkggZuv8HddJdLqR",
 				"ekGUAASuWTKDasYzVBWImO9IbFBE38e08WjjkTqx");
 
@@ -50,11 +46,16 @@ public class Database {
 
 	}
 
+	/**
+	 * Zum vom Tag ausgelesen Name wird die RoomID ausgelesen
+	 * 
+	 * @param roomName
+	 * @return
+	 */
 	public String getRoomIDtoName(String roomName) {
 
 		String roomID = null;
 
-		// //Get values of DB
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Rooms");
 		query.whereEqualTo("name", roomName);
 
@@ -63,12 +64,13 @@ public class Database {
 		try {
 			objects = query.find();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 		for (ParseObject resultEntry : objects) {
 
+			// ID wird in den Output-Parameter geschrieben
 			roomID = (String) resultEntry.getObjectId();
 
 		}
@@ -76,26 +78,26 @@ public class Database {
 		return roomID;
 	}
 
-	// IN der VisitorApp werden die Präsentationen nicht asynchron geladen, da
-	// das Ergebnis auf jedefnall da sein muss um damit weiterzuarbeiten
+	/**
+	 * In der VisitorApp werden die Präsentationen nicht asynchron geladen, da
+	 * das Ergebnis auf jedefnall da sein muss um damit weiterzuarbeiten
+	 * 
+	 * @param roomID
+	 */
 	public void loadPresentations(String roomID) {
 
-		
+		// Alte Einträge werden gelöscht
 		arrayListPresentation.clear();
-		//Alte Einträge werden gelöscht
-		
 
-		// //Get values of DB
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Presentations");
 		query.whereEqualTo("room_id", roomID);
 
 		// Einträge werden gesucht
-
 		List<ParseObject> objects = null;
 		try {
 			objects = query.find();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}
 
@@ -115,6 +117,10 @@ public class Database {
 
 	}
 
+	/**
+	 * Die gerade aktuell laufende Präsentation, falls vorhanden, wird ermittelt
+	 * @return
+	 */
 	public Presentation getCurrentPresentation() {
 
 		Presentation currentPresentation = null;
@@ -125,36 +131,24 @@ public class Database {
 			Date currentDate = c.getTime();
 			Date endDate = null;
 			Date startDate = null;
-		
-		    SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy-HH:mm");
+
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy-HH:mm");
 			try {
-				 startDate = format.parse(presentation.getDate()+"-"+ presentation.getTime_from());
+				startDate = format.parse(presentation.getDate() + "-"
+						+ presentation.getTime_from());
 			} catch (java.text.ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				endDate = format.parse(presentation.getDate()+"-"+ presentation.getTime_to());
+				endDate = format.parse(presentation.getDate() + "-"
+						+ presentation.getTime_to());
 			} catch (java.text.ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			if (currentDate.after(startDate) && currentDate.before(endDate)){
+
+			if (currentDate.after(startDate) && currentDate.before(endDate)) {
 				currentPresentation = presentation;
 			}
-
-//			int day = c.get(Calendar.DAY_OF_MONTH);
-//			int month = c.get(Calendar.MONTH);
-//			int year = c.get(Calendar.YEAR);
-//			String date = day + "." + month + "." + year;
-//
-//			Toast.makeText(context, date, Toast.LENGTH_LONG).show();
-//
-//			if (presentation.getDate().equals(date)) {
-//								currentPresentation = presentation;
-
-//			}
 
 		}
 
@@ -162,19 +156,13 @@ public class Database {
 
 	}
 
-	public ArrayList<Room> getRooms() {
-
-		return arrayListRooms;
-	}
-	
-	
 	public void saveMailAdress(String mail, Presentation presentation) {
-		// Saving a room
+		//Die Mail Adresse wird gespeichert
 		ParseObject roomObject = new ParseObject("Subscribers");
 		roomObject.put("mail", mail);
 		roomObject.put("presentation_id", presentation.getObjectId());
-				
-		//Uns ist egal wann es gespeichert wird (Gut bei schlechter Verbindung)
+
+		// Uns ist egal wann es gespeichert wird (Gut bei schlechter Verbindung)
 		roomObject.saveEventually();
 	}
 
