@@ -15,8 +15,8 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.dhbw_loerrach.NFCTagungVisitor.R;
 import de.dhbw_loerrach.NFCTagungVisitor.NonNFCActivities.AskUserActivity;
-import de.smbsolutions.tagungVisitor.R;
 
 /**
  * Diese Activity wird entweder direkt vom Tag aufgerufen oder startet (wenn

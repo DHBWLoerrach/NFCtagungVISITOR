@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.AccountPicker;
 
+import de.dhbw_loerrach.NFCTagungVisitor.R;
 import de.dhbw_loerrach.NFCTagungVisitor.Database.Database;
 import de.dhbw_loerrach.NFCTagungVisitor.Database.Presentation;
-import de.smbsolutions.tagungVisitor.R;
 
 /**
  * Diese Activity fragt den User welche E-Mail Adresse er verwenden m�chte, und
