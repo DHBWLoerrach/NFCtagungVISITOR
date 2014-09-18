@@ -1,4 +1,4 @@
-package de.smbsolutions.tagungVisitor.NfcRelevant;
+package de.dhbw_loerrach.NFCTagungVisitor.NfcRelevant;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -15,14 +15,14 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.dhbw_loerrach.NFCTagungVisitor.NonNFCActivities.AskUserActivity;
 import de.smbsolutions.tagungVisitor.R;
-import de.smbsolutions.tagungVisitor.NonNFCActivities.AskUserActivity;
 
 /**
  * Diese Activity wird entweder direkt vom Tag aufgerufen oder startet (wenn
- * über den Launcher geöffnet den Foreground-Dispatch Modus) Wenn ein Tag
+ * ï¿½ber den Launcher geï¿½ffnet den Foreground-Dispatch Modus) Wenn ein Tag
  * erkannt wurde, wird dessen Raumname ausgelesen und zur weiteren Verarbeitung
- * die nächste Activity (AskUserActivty) aufgerufen
+ * die nï¿½chste Activity (AskUserActivty) aufgerufen
  * 
  * @author Mirko
  * 
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 		mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 		if (mNfcAdapter == null) {
 			Toast.makeText(this,
-					"NFC ist auf Ihrem Gerät leider nicht verfügbar",
+					"NFC ist auf Ihrem Gerï¿½t leider nicht verfï¿½gbar",
 					Toast.LENGTH_LONG).show();
 			finish();
 			return;
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 
 		if (haveNetworkConnection() == false) {
 			Toast.makeText(this,
-					"Für diese App ist eine Internetverbindung nötig",
+					"Fï¿½r diese App ist eine Internetverbindung nï¿½tig",
 					Toast.LENGTH_LONG).show();
 			startActivity(new Intent(
 					android.provider.Settings.ACTION_WIFI_SETTINGS));
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 		// diese Methode das erkennens
 		handleIntent(getIntent());
 
-		// Sobald die Aktivität in den Vordergrund kommt, wird der
+		// Sobald die Aktivitï¿½t in den Vordergrund kommt, wird der
 		// Foreground-Dispatcher aktiviert.
 		// Von nun an werden alle NFC Tags automatisch an diese App
 		// weitergeleitet
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	// Dies wird aufgerufen ein NFCIntent vom Foreground-Dispatcher ausgelöst
+	// Dies wird aufgerufen ein NFCIntent vom Foreground-Dispatcher ausgelï¿½st
 	// wird.
 	// An dieser Stelle kann dann auf das gleiche Tag zugegriffen werden
 	@Override
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 		String action = intent.getAction();
 
 		// Wenn ein NDEF-Tag via Intenterkannt wurde
-		// Deshalb wurde zusätzlich zum Android Application Record auch ein
+		// Deshalb wurde zusï¿½tzlich zum Android Application Record auch ein
 		// URI-Record gespeichert.
 		// Ansonsten liese sich das nicht eindeutig dem NDEF-Event via Intent
 		// zuordnen
@@ -126,7 +126,7 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * Das NFC Tag wird ausgelesen und die nächste Activity gestaret
+	 * Das NFC Tag wird ausgelesen und die nï¿½chste Activity gestaret
 	 * 
 	 * @param intent
 	 */
@@ -151,8 +151,8 @@ public class MainActivity extends Activity {
 
 				}
 				//
-				// Hier wird identifiziert ob der Tag für uns auswertbaren Text
-				// enthält.
+				// Hier wird identifiziert ob der Tag fï¿½r uns auswertbaren Text
+				// enthï¿½lt.
 				if (record.getTnf() == NdefRecord.TNF_MIME_MEDIA
 						&& new String(record.getType()).equals("text/plain")) {
 					Toast.makeText(this, "ich bin text", Toast.LENGTH_SHORT)
@@ -163,7 +163,7 @@ public class MainActivity extends Activity {
 
 			}
 
-			// Wenn es einer unserer Flag ist, wird die nächste Aktivity
+			// Wenn es einer unserer Flag ist, wird die nï¿½chste Aktivity
 			// gestartet
 			if (flagValid == true) {
 				Intent intentNext = new Intent(getApplicationContext(),

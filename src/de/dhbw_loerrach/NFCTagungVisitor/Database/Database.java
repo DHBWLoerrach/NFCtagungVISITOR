@@ -1,4 +1,4 @@
-package de.smbsolutions.tagungVisitor.Database;
+package de.dhbw_loerrach.NFCTagungVisitor.Database;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 /**
- * Diese Klasse repräsentiert die Parse Online Datenbank
+ * Diese Klasse reprï¿½sentiert die Parse Online Datenbank
  * 
  * @author Mirko
  * 
@@ -26,7 +26,7 @@ public class Database {
 
 
 	/**
-	 * Liefert die Instanz zurück (Singleton)
+	 * Liefert die Instanz zurï¿½ck (Singleton)
 	 */
 	public static Database getInstance(Context context) {
 		if (db_object == null)
@@ -59,7 +59,7 @@ public class Database {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Rooms");
 		query.whereEqualTo("name", roomName);
 
-		// Einträge werden gesucht
+		// Eintrï¿½ge werden gesucht
 		List<ParseObject> objects = null;
 		try {
 			objects = query.find();
@@ -79,20 +79,20 @@ public class Database {
 	}
 
 	/**
-	 * In der VisitorApp werden die Präsentationen nicht asynchron geladen, da
+	 * In der VisitorApp werden die Prï¿½sentationen nicht asynchron geladen, da
 	 * das Ergebnis auf jedefnall da sein muss um damit weiterzuarbeiten
 	 * 
 	 * @param roomID
 	 */
 	public void loadPresentations(String roomID) {
 
-		// Alte Einträge werden gelöscht
+		// Alte Eintrï¿½ge werden gelï¿½scht
 		arrayListPresentation.clear();
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Presentations");
 		query.whereEqualTo("room_id", roomID);
 
-		// Einträge werden gesucht
+		// Eintrï¿½ge werden gesucht
 		List<ParseObject> objects = null;
 		try {
 			objects = query.find();
@@ -118,7 +118,7 @@ public class Database {
 	}
 
 	/**
-	 * Die gerade aktuell laufende Präsentation, falls vorhanden, wird ermittelt
+	 * Die gerade aktuell laufende Prï¿½sentation, falls vorhanden, wird ermittelt
 	 * @return
 	 */
 	public Presentation getCurrentPresentation() {

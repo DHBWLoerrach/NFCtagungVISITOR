@@ -1,4 +1,4 @@
-package de.smbsolutions.tagungVisitor.Database;
+package de.dhbw_loerrach.NFCTagungVisitor.Database;
 
 /**
  * Instanz der DB-Klasse "Presentations"

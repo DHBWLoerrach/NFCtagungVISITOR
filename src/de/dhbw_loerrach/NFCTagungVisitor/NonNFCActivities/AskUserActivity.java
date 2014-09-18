@@ -1,4 +1,4 @@
-package de.smbsolutions.tagungVisitor.NonNFCActivities;
+package de.dhbw_loerrach.NFCTagungVisitor.NonNFCActivities;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
@@ -11,12 +11,12 @@ import android.widget.TextView;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.AccountPicker;
 
+import de.dhbw_loerrach.NFCTagungVisitor.Database.Database;
+import de.dhbw_loerrach.NFCTagungVisitor.Database.Presentation;
 import de.smbsolutions.tagungVisitor.R;
-import de.smbsolutions.tagungVisitor.Database.Database;
-import de.smbsolutions.tagungVisitor.Database.Presentation;
 
 /**
- * Diese Activity fragt den User welche E-Mail Adresse er verwenden möchte, und
+ * Diese Activity fragt den User welche E-Mail Adresse er verwenden mï¿½chte, und
  * speichert diese dann in der Datenbank falls in dem abgescannten Raum-Tag
  * gerade ein Vortrag statfindet
  * 
@@ -43,10 +43,10 @@ public class AskUserActivity extends Activity {
 
 		database = Database.getInstance(this);
 
-		// Es wird geschaut, ob momentan gerade ein Vortrag läuft
+		// Es wird geschaut, ob momentan gerade ein Vortrag lï¿½uft
 		presentation = identifyCurrentPresentation();
 
-		// Wenn ja, kann der Besucher eine E-Mail-Adresse auswählen
+		// Wenn ja, kann der Besucher eine E-Mail-Adresse auswï¿½hlen
 		if (presentation != null) {
 
 			try {
@@ -67,7 +67,7 @@ public class AskUserActivity extends Activity {
 	}
 
 	/**
-	 * Wenn der Benuter die E-Mail-Adresse ausgewählt hat, wird sie in der
+	 * Wenn der Benuter die E-Mail-Adresse ausgewï¿½hlt hat, wird sie in der
 	 * Datenbank gespeichert und eine Erfolgsmeldung ausgegeben
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class AskUserActivity extends Activity {
 
 			//Erfolgsmeldung
 			txtRoomName.setText(Html
-					.fromHtml("Sie haben sich erfolgreich für den Vortrag <b> "
+					.fromHtml("Sie haben sich erfolgreich fï¿½r den Vortrag <b> "
 							+ presentation.getTopic() + " </b> (von "
 							+ presentation.getTime_from() + " bis "
 							+ presentation.getTime_to() + "Uhr) in Raum <b> "
