@@ -40,13 +40,7 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="de.smbsolutions.tagungVisitor.NewRoomActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
         <activity android:name="de.dhbw_loerrach.NFCTagungVisitor.NonNFCActivities.AskUserActivity" >
-        </activity>
-        <activity android:name="de.smbsolutions.tagungVisitor.WriteTagActivity" >
         </activity>
     </application>
 
